@@ -13,24 +13,18 @@
 	<script>
 		var myDataRef = new Firebase('https://blistering-fire-5737.firebaseio.com/');
 
-		$('#messageInput').keypress(function (e) {
+      $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = $('#nameInput').val();
           var text = $('#messageInput').val();
-          // Adding to data base normally myDataRef.set(name + text);
-          // JSON Obj adding myDataRef.set({name: name, text: text});
-          myDataRef.push({name: name, text: text}); // Makes a list, chronologicallly added
+          myDataRef.push({name: name, text: text});
           $('#messageInput').val('');
         }
       });
-		//You always read data using callbacks
-		// 4 event types: value, child_added, child_changed, child_removed (extra child_moved)
-		//Callback to firebase using on(event type, callback type) method 
-		myDataRef.on('child_added', function(snapshot) {
-			var message = snapshot.val();
-			displayChatMessage(message.name, message.text);
-		});
-
+      myDataRef.on('child_added', function(snapshot) {
+        var message = snapshot.val();
+        displayChatMessage(message.name, message.text);
+      });
       function displayChatMessage(name, text) {
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
@@ -38,6 +32,5 @@
 	</script>
 	
     <h1> Hello World !!</h1>
-    <h1>Daniel Hello World !</h1>
 </body>
 </html>
