@@ -9,7 +9,19 @@
 	<input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='messageInput' placeholder='Message'>
 	<script>
+		var FirebaseTokenGenerator = require("firebase-token-generator");
+		var tokenGenerator = new FirebaseTokenGenerator("7NCGrTHkJVs2gpshgihJZF6kbZcBDKrAqkQSV7ht");
+		var token = tokenGenerator.createToken(
+    				{uid: "custom:1", some: "arbitrary", data: "here"});
 		var myDataRef = new Firebase('https://blistering-fire-5737.firebaseio.com/');
+
+		ref.authWithCustomToken(AUTH_TOKEN, function(error, authData) {
+		  if (error) {
+		    console.log("Login Failed!", error);
+		  } else {
+		    console.log("Login Succeeded!", authData);
+		  }
+		});
 
 		$('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
