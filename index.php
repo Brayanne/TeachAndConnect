@@ -8,44 +8,46 @@
 <body>
 	<input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='messageInput' placeholder='Message'>
-	<script>
-		var FirebaseTokenGenerator = require("firebase-token-generator");
-		var tokenGenerator = new FirebaseTokenGenerator("7NCGrTHkJVs2gpshgihJZF6kbZcBDKrAqkQSV7ht");
-		var token = tokenGenerator.createToken(
-    				{uid: "custom:1", some: "arbitrary", data: "here"});
-		var myDataRef = new Firebase('https://blistering-fire-5737.firebaseio.com/');
+    <?php
+	echo"	<script>
+			var FirebaseTokenGenerator = require('firebase-token-generator');
+			var tokenGenerator = new FirebaseTokenGenerator('7NCGrTHkJVs2gpshgihJZF6kbZcBDKrAqkQSV7ht');
+			var token = tokenGenerator.createToken(
+	    				{uid: 'custom:1', some: 'arbitrary', data: 'here'});
+			var myDataRef = new Firebase('https://blistering-fire-5737.firebaseio.com/');
 
-		ref.authWithCustomToken(AUTH_TOKEN, function(error, authData) {
-		  if (error) {
-		    console.log("Login Failed!", error);
-		  } else {
-		    console.log("Login Succeeded!", authData);
-		  }
-		});
+			ref.authWithCustomToken(AUTH_TOKEN, function(error, authData) {
+			  if (error) {
+			    console.log('Login Failed!', error);
+			  } else {
+			    console.log('Login Succeeded!', authData);
+			  }
+			});
 
-		$('#messageInput').keypress(function (e) {
-        if (e.keyCode == 13) {
-          var name = $('#nameInput').val();
-          var text = $('#messageInput').val();
-          // Adding to data base normally myDataRef.set(name + text);
-          // JSON Obj adding myDataRef.set({name: name, text: text});
-          myDataRef.push({name: name, text: text}); // Makes a list, chronologicallly added
-          $('#messageInput').val('');
-        }
-      });
-		//You always read data using callbacks
-		// 4 event types: value, child_added, child_changed, child_removed (extra child_moved)
-		//Callback to firebase using on(event type, callback type) method 
-		myDataRef.on('child_added', function(snapshot) {
-			var message = snapshot.val();
-			displayChatMessage(message.name, message.text);
-		});
+			$('#messageInput').keypress(function (e) {
+	        if (e.keyCode == 13) {
+	          var name = $('#nameInput').val();
+	          var text = $('#messageInput').val();
+	          // Adding to data base normally myDataRef.set(name + text);
+	          // JSON Obj adding myDataRef.set({name: name, text: text});
+	          myDataRef.push({name: name, text: text}); // Makes a list, chronologicallly added
+	          $('#messageInput').val('');
+	        }
+	      });
+			//You always read data using callbacks
+			// 4 event types: value, child_added, child_changed, child_removed (extra child_moved)
+			//Callback to firebase using on(event type, callback type) method 
+			myDataRef.on('child_added', function(snapshot) {
+				var message = snapshot.val();
+				displayChatMessage(message.name, message.text);
+			});
 
-      function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-      };
-	</script>
+	      function displayChatMessage(name, text) {
+	        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+	        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+	      };
+		</script>";
+	?>
     <h1> Hello World !!</h1>
     <h1>Mateo Hello World !</h1>
 </body>
