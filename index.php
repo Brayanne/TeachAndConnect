@@ -6,6 +6,7 @@
     <title>Final Project</title>
 </head>
 <body>
+	<div id='messageDiv'></div>
 	<input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='messageInput' placeholder='Message'>
     <?php
