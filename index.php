@@ -26,8 +26,11 @@
         displayChatMessage(message.name, message.text);
       });
       function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('<div/>').text(text).prepend($('<em>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+
+        $('<div>').text('['+timestamp+'] ').append($('<name>').text(name+': ')).append($('<em>').html(text)).appendTo($('#messagesDiv'));
+
       };
 	</script>
 	
