@@ -1,0 +1,22 @@
+h2{
+	color:green;
+	font-family: Papyrus,fantasy; 
+	font-weight: normal;
+    font-size: 2em;
+	letter-spacing: .2em;
+	line-height: 1.1em;
+	margin:0px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#mainHeader{
+	color:green;
+	font-family: Papyrus,fantasy;
+	font-weight: normal;
+    font-size: 2em;
+	letter-spacing: .2em;
+	line-height: 1.1em;
+	margin:0px;
+	text-align: left;	   
+}
