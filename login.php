@@ -14,6 +14,7 @@
     $uniqueId=$res['uniqueid'];
     $firstName = $res['firstname'];
     $lastName = $res['lastname'];
+    
     // fetching user role
     $sql = "SELECT roleid FROM roletable WHERE uniqueid = $1";
     $stmt = pg_query_params($dbConn, $sql, array($uniqueId));
@@ -26,6 +27,7 @@
                 $_SESSION['username'] = $_POST['username'];
                 $_SESSION['firstname'] = $firstName;
                 $_SESSION['lastname'] = $lastName;
+                $_SESSION['uniqueid'] = $uniqueId;
                 if ($result == '1') {
                 header("Location: adminPage.php");
                 } else if ($result == '2') {

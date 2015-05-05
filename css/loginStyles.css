@@ -1,0 +1,56 @@
+form{
+    width:100%;
+    text-align:center;
+}
+
+#mainHeader{
+	color:black;
+	font-family: Papyrus,fantasy;
+	font-weight: normal;
+    font-size: 2em;
+	letter-spacing: .2em;
+	line-height: 1.1em;
+	margin:0px;
+	text-align: center;   
+}
+
+h1{
+    color:black;
+	font-family: Papyrus,fantasy;
+	font-weight: normal;
+    font-size: 2em;
+	letter-spacing: .2em;
+	line-height: 1.1em;
+	margin:0px;
+	text-align: center;   
+}
+
+
+body{
+    background-image: url("../img/mainBackground.jpg");   	
+}
+
+#submitButton{ 
+    background: black;
+    border-radius: 20px;
+    text-shadow: 7px 6px 5px pink;
+    box-shadow: 10px 9px 8px gray;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border: solid #227baa 5px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
+}
+
+
+#loginError{
+    color:red;
+	font-family: Papyrus,fantasy;
+	font-weight: normal;
+	letter-spacing: .2em;
+	line-height: 1.1em;
+	margin:0px;
+	text-align: center;     
+}

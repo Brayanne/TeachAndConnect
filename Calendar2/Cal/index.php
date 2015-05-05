@@ -3,8 +3,9 @@
 <head>
     <title>T&C Event Calendar</title>
     <!--Navigation Style Sheet-->
-    <link type="text/css" rel="stylesheet" href="../../css/mainPageStyles.css">
-	      
+    <link type="text/css" rel="stylesheet" href="../../css/navStyles.css">
+	<link type="text/css" rel="stylesheet" href="../../css/mainHeaderStyles.css"> 
+    
     <link type="text/css" rel="stylesheet" href="media/layout.css" />
     <link type="text/css" rel="stylesheet" href="themes/calendar_green.css" />
     <!-- demo stylesheet 
@@ -23,46 +24,26 @@
 	
 </head>
 <body>
+    <!--
         <div id="header">
 			<div class="bg-help">
 				<div class="inBox">
 					<h1 id="logo">Teach&Connect Event Calendar</h1>
-					<!--<p id="claim"><a href="http://javascript.daypilot.org/"></a> </p>-->
+					<!--<p id="claim"><a href="http://javascript.daypilot.org/"></a> </p>
 					<hr class="hidden" />
 				</div>
 			</div>
         </div>
+    -->
+    <br/>
+         <h1 id="mainHeader">Teach & Connect</h1>
+    <br/>
+        <!-- Navigation Bar -->
     
-    <div id="navigationBar">
-            
-        
-        <nav>
-	        <ul>
-		        <li><a href="../../teacherMainPage.php">Home</a></li>
-                <li>
-                    <a href="#">Profile<span class="caret"></span></a>
-                    <div>
-				        <ul>
-			                <li><a href="#">Edit</a></li>
-			            </ul>
-			        </div>
-                </li>
-                <li><a href="Calendar2/Cal/index.php">My Calendar</a></li>
-		        <li>
-      		        <a href="#">Grades<span class="caret"></span></a>
-			        <div>
-				        <ul>
-			                <li><a href="#">Update</a></li>
-				            <li><a href="#">View</a></li>
-			            </ul>
-			        </div>
-		        </li>
-		    
-		    <li><a href="#">Add Parent</a></li>
-            <li><a href="#">Logout</a></li>
-	    </ul>
-    </nav>    
-      </div>
+        <?php
+            require("../../teacherNav.php");
+            generateTeacherCalNav();
+        ?>
     
         <div class="shadow"></div>
         <div class="hideSkipLink"></div>

@@ -1,5 +1,5 @@
-h2{
-	color:green;
+#feed, h2{
+	color:black;
 	font-family: Papyrus,fantasy; 
 	font-weight: normal;
     font-size: 2em;
@@ -9,14 +9,9 @@ h2{
 	text-align: center;
 	text-transform: uppercase;
 }
-
-#mainHeader{
-	color:green;
-	font-family: Papyrus,fantasy;
-	font-weight: normal;
-    font-size: 2em;
-	letter-spacing: .2em;
-	line-height: 1.1em;
-	margin:0px;
-	text-align: left;	   
+#feed{
+    background-color:white;
+    width:100;
+    text-align:center;
 }
+
