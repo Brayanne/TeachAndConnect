@@ -21,14 +21,13 @@
     
 }
 #feed{
-    
     width:100;
     text-align:center;
 }
 
 .post {
-
-border: 2px solid black;
+    
+background-color: white;
 padding-right:7px;
 padding-left:7px;
 margin-top: 20px;

@@ -7,7 +7,7 @@ $dbConn = getConnection();
     } 
 
 $sql = "SELECT description, profilepicture FROM users WHERE username = $1";
-$stmt = pg_query_params($dbConn, $sql, array($_SESSION['username']));
+$stmt = pg_query_params($dbConn, $sql, array("teacher"));
 $res = pg_fetch_assoc($stmt);
 
 $profilepicture = $res['profilepicture'];
@@ -16,7 +16,7 @@ $description = $res['description'];
 function getProfilePic(){
     $dbConn = getConnection();
     $sql = "SELECT profilepicture FROM users WHERE username =$1 ";
-    $stmt = pg_query_params($dbConn, $sql, array($_SESSION['username']));
+    $stmt = pg_query_params($dbConn, $sql, array('teacher'));
     $res = pg_fetch_assoc($stmt);
 
     return $res['profilepicture'];
@@ -60,7 +60,7 @@ function getProfilePic(){
         <!---------------------->
         
     </div>
-    <h1 id="profileHeader"><?= $_SESSION['firstname'] ?>'s Profile </h1>
+    <h1 id="profileHeader">Teacher's Profile </h1>
     <br/>
   
     
@@ -70,7 +70,7 @@ function getProfilePic(){
              // Display Uknown
              echo "<img src='tmp/unknown.jpg' alt='Unknown User' />";
          }else {
-            $profilePic = $_SESSION['username']."/".$profilePic;
+            $profilePic = "teacher/".$profilePic;
             echo "<img src='img/$profilePic' id='proPicture'  alt='Users' />";
          }
          
