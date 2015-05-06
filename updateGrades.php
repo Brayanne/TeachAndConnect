@@ -20,8 +20,6 @@
                 $studentid = htmlspecialchars($grade['studentid']);
                 $feedback = htmlspecialchars($grade['feedback']);
                 $assignmentGrade = htmlspecialchars($grade['grade']);
-                
-
          }
 
     }
@@ -56,6 +54,26 @@
 
     ?>
 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Assignment</title>
+    <meta charset = "utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/navStyles.css">
+    <link type="text/css" rel="stylesheet" href="css/mainHeaderStyles.css">
+    <link type="text/css" rel="stylesheet" href="css/updateAssignmentStyles.css">
+    <link type="text/css" rel="stylesheet" href="css/backgroundStyles.css">
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script><!-- importing jQuery library-->
+
+</head>
+    <body>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <h1 id="mainHeader">Teach & Connect</h1>    
+    <h1>Update Record</h1>
+        <div id="formDiv">
+            
+      <br/> 
     <form method="post">
 
         Student ID: <input type="text" name="studentid" value="<?=$studentid?>"> <br />
@@ -64,7 +82,12 @@
         Possible Points: <input type="text" name="possiblepoints" value="<?=$possiblepoints?>"><br />
         Feedback: <input type="text" name="feedback" value="<?=$feedback?>"><br />
         <input type="hidden" name="assignmentid" value="<?=$assignmentid?>"> 
-
-        <input type="submit" name="updateForm" value="Update!">
+<br/>
+        <input id="button" type="submit" name="updateForm" value="Update!">
     
-</form>
+    </form>
+            
+        </div>         
+        
+    </body>
+</html>

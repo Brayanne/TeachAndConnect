@@ -1,4 +1,26 @@
 body{
-    background-image: url("../img/background.jpg"); 
+    background-image: url("../img/background.jpg");
     background-repeat: repeat-x;
+    background-color:#119151;
+}
+
+#calendarHeader{
+	color:black;
+	font-family: Papyrus,fantasy;
+	font-weight: normal;
+    font-size: 2.5em;
+	letter-spacing: .2em;
+	line-height: 1.1em;
+	margin:0px;
+	text-align: center;    
+}
+#name {
+    text-align: left;
+    color:black;
+    font-family: Papyrus,fantasy;
+	font-weight: normal;
+    font-size: 1.5em;
+	letter-spacing: .2em;
+	line-height: 1.1em;
+	margin:0px;	
 }

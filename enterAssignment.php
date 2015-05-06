@@ -34,12 +34,13 @@ To change this template use Tools | Templates.
                 Assignment Grade: <input type="text" id="grade"><br/>
                 Possible Points: <input type="text" id="possiblepoints"><br/>
                 Feedback: <input type="text" id="feedback"><br/><br/>
-                <input type="button" value="Enter" id="enterAssignment">  
+                <input id="enterAssignment" type="button" value="Enter" >  
                 
             </div>
         </div>
         
         <script>
+
             $("#enterAssignment").click( function(event){
                 var studentid = $("#studentid").val();
                 var title = $("#title").val();
@@ -57,6 +58,7 @@ To change this template use Tools | Templates.
                           possiblepoints: possiblepoints,
                           feedback: feedback}
                 }); 
+                window.location.href = "viewGrades.php";
             });      
         </script>
         

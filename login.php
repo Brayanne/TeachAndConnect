@@ -28,6 +28,7 @@
                 $_SESSION['firstname'] = $firstName;
                 $_SESSION['lastname'] = $lastName;
                 $_SESSION['uniqueid'] = $uniqueId;
+                $_SESSION['roleid'] = $result;
                 if ($result == '1') {
                 header("Location: adminPage.php");
                 } else if ($result == '2') {

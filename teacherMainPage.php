@@ -34,14 +34,29 @@
 					dataType: "json",
 					data: {"uniqueid": $("#myid").val()},
 					success: function(data, status) {
-						$("#feed").html("<h2>"+data['title']+"</h2><br><h3>"+data['description']+"</h3>");
+                        for(var i = 0; i < data.length; i++){
+						$("#feed").append("<div class='post'><h2>"+data[i]['title']+"</h2><br><p>"+data[i]['description']+"</p></div>");
+                        }
 					},
 					complete: function(data, status) {
                         
 					}
 				});
 			}
-        
+        function postEvent( title, description){
+                    $.ajax({
+					type: "GET",
+					url: "addEvent.php", // same directory
+					dataType: "html",
+					data: {"uniqueid": $("#myid").val(),"title": title, "description": description},
+					success: function(data, status) {
+						
+					},
+					complete: function(data, status) {
+                        
+					}
+				});
+        }
         
             $(function() {
         var dialog, form,
@@ -55,10 +70,11 @@
           allFields.removeClass( "ui-state-error" );
 
           if ( valid ) {
-            $( "#feed" ).append( "<h2>"+title.val() + "</td>" +
-              "<td>" + description.val() + "</td>"+
-            "</tr>" );
+            $( "#feed" ).append( "<div class='post'><h2>"+title.val() + "</h2>" +
+              "<br/><p>" + description.val() + "</p></div>");
+              postEvent(title.val(), description.val());
             dialog.dialog( "close" );
+            
           }
           return valid;
         }
@@ -99,7 +115,7 @@
         <h1 id="mainHeader">Teach & Connect</h1>
       
         <div id="userName">
-            <h3><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'];?></h3>
+            <h3 id="name"><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'];?></h3>
         </div>
         
         <!-- Navigation Bar -->

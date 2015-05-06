@@ -6,19 +6,6 @@
     if(!isset($_SESSION['username'])) {
 	    header("Location: userLogin.php?error=wrong username or password");
     } 
-
-    if (isset ($_GET['deleteForm'])){  //checking whether we have clicked on the "Delete" button
-        $sql = "DELETE FROM grades 
-                 WHERE assignmentid = '".$_GET['assignmentid']."'";    
-        $result = pg_query($sql); 
-        if (!$result) { 
-            $errormessage = pg_last_error(); 
-            echo "Error with query: " . $errormessage; 
-            exit(); 
-        } 
-        pg_close(); 
-
-    }
  ?>
 
         
@@ -30,21 +17,6 @@ To change this template use Tools | Templates.
     
 <head>
     <title>Grades</title>
-    
-    <script>
-        
-            function confirmDelete(record) {
-               // alert("hi"); // for testing
-               var deleteRecord = confirm("Are you sure you want to delete " + record + "?");
-               if(!deleteRecord){
-                   return false
-               } else {
-                   return true;
-               }
-            }
-        
-        </script>
-    
     <meta charset = "utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/navStyles.css">
     <link type="text/css" rel="stylesheet" href="css/mainHeaderStyles.css">
@@ -68,7 +40,7 @@ To change this template use Tools | Templates.
         <!-- Navigation Bar -->
         <?php
             require("teacherNav.php");
-            generateTeacherNav();
+            generateParentNav();
         ?>
         <!---------------------->
         <br/>
@@ -76,28 +48,16 @@ To change this template use Tools | Templates.
         
         <table class="tftable" border="1">
        
-        <tr><th>Last Name</th><th>First Name</th><th>Grade Item</th><th>Grade</th><th>Range</th><th>Percentage</th><th>Letter Grade</th><th>Feedback</th><th>Update</th><th>Delete</th></tr>    
+        <tr><th>Grade Item</th><th>Grade</th><th>Range</th><th>Percentage</th><th>Letter Grade</th><th>Feedback</th></tr>    
             
             <?php
-             //$studentid = 1; // 1 FOR TESTING PURPOSES! 
-             // NEED TO GET PERCENTAGE, LETTER GRADE
-             //$grades = getGrades($studentid);
-             //
-                
              $gradeTotal = 0;
              $possiblePointsTotal = 0;
-
              $dbConn = getConnection();
-             $sql = "SELECT * FROM grades";
+             $sql = "SELECT * FROM grades WHERE studentid = 1";
              $grades = pg_query($sql);
              while($grade = pg_fetch_assoc($grades)) { 
                  echo "<tr>";
-                 $query = "SELECT * FROM students WHERE studentid = '".$grade['studentid']."'";
-                 $names = pg_query($query);
-                 while($name = pg_fetch_assoc($names)) {
-                     echo "<td>" . $name['lastname'] . "</td>";
-                     echo "<td>" . $name['firstname'] . "</td>";
-                 }
                  echo "<td>" . htmlspecialchars($grade['title']) . "</td>";
                  echo "<td>" . htmlspecialchars($grade['grade']) . "</td>";
                  echo "<td>" . htmlspecialchars($grade['possiblepoints']) . "</td>";
@@ -120,23 +80,9 @@ To change this template use Tools | Templates.
                  echo "<td>" . number_format($average, 2) . "%</td>";
                  echo "<td>" . $letter . "</td>";
                  echo "<td>" . htmlspecialchars($grade['feedback']) . "</td>";
-
-             ?>  <td>
-                     <form action="updateGrades.php">
-                         <input type="hidden" name="assignmentid" value="<?=$grade['assignmentid']?>" />    
-                         <input type="submit" value="Update" name="updateForm"/>
-                     </form>   
-                </td> 
-                <td>
-                     <form onsubmit="return confirmDelete('<?=$grade['assignmentid']?>')">
-                         <input type="hidden" name="assignmentid" value="<?=$grade['assignmentid']?>" />    
-                         <input type="submit" value="Delete" name="deleteForm"/>
-                     </form>   
-                </td>
-               </tr>
-
-             <?php    
+                 echo "</tr>";
                } //closes foreach
+
                $classAverage = number_format(($gradeTotal / $possiblePointsTotal), 2) * 100;
                $letter = 'F';
                  if($classAverage >= 90)
@@ -149,14 +95,15 @@ To change this template use Tools | Templates.
                      $letter = 'D';
                  else 
                      $letter = 'F';
+
              ?>            
             
-           
-        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td><td><b>Earned Points</b></td><td><b>Possible Total Points</b></td><td><b>Class Average</b></td><td><b>Letter Grade</b></td><td></td><td></td><td></td></tr>
+            
+         <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td><b>Earned Points</b></td><td><b>Possible Total Points</b></td><td><b>Class Average</b></td><td><b>Letter Grade</b></td><td></td></tr>
 
-        <tr><td></td><td></td><td></td><td><?=$gradeTotal?></td><td><?=$possiblePointsTotal?></td><td><?=$classAverage?>%</td><td><?=$letter?></td><td></td><td></td><td></td></tr>
-        </table>
+        <tr><td></td><td><?=$gradeTotal?></td><td><?=$possiblePointsTotal?></td><td><?=$classAverage?>%</td><td><?=$letter?></td><td></td></tr>
+                </table>
     <br/><br/><br/><br/><br/><br/>
     </body>
 </html>

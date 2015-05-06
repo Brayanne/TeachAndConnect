@@ -1,10 +1,24 @@
-#myEvents{
-	color: black;
+#header2{
+   	color: black;
 	font-family: Papyrus,fantasy;
 	font-weight: normal;
     font-size: 2.5em;
 	letter-spacing: .2em;
 	line-height: 1.1em;
 	margin:0px;
-	text-align: center;    
+	text-align: center; 
+}
+
+#logout{
+    background: black;
+    border-radius: 20px;
+    text-shadow: 7px 6px 5px pink;
+    box-shadow: 10px 9px 8px gray;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border: solid #227baa 5px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
 }

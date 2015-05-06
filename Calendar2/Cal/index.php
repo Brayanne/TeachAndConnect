@@ -1,3 +1,11 @@
+<?php
+    require("../../connection/connect.php");  
+    session_start();
+    if(!isset($_SESSION['username'])) {
+	    header("Location: userLogin.php?error=wrong username or password");
+    } 
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,6 +13,7 @@
     <!--Navigation Style Sheet-->
     <link type="text/css" rel="stylesheet" href="../../css/navStyles.css">
 	<link type="text/css" rel="stylesheet" href="../../css/mainHeaderStyles.css"> 
+    <link type="text/css" rel="stylesheet" href="../../css/backgroundStyles.css">
     
     <link type="text/css" rel="stylesheet" href="media/layout.css" />
     <link type="text/css" rel="stylesheet" href="themes/calendar_green.css" />
@@ -35,16 +44,22 @@
 			</div>
         </div>
     -->
-    <br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
          <h1 id="mainHeader">Teach & Connect</h1>
     <br/>
         <!-- Navigation Bar -->
-    
         <?php
             require("../../teacherNav.php");
-            generateTeacherCalNav();
+            if ($_SESSION['roleid'] == 2) { // teacher
+                generateTeacherCalNav();
+            } else if ($_SESSION['roleid'] == 3) { // parent
+                generateParentCalNav();
+            }
+            
         ?>
+        <!-------------------->
     
+        <h2 id="calendarHeader">Calendar</h2>
         <div class="shadow"></div>
         <div class="hideSkipLink"></div>
         <div class="main">
